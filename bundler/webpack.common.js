@@ -12,7 +12,10 @@ module.exports = {
   devtool: "source-map",
   plugins: [
     new CopyWebpackPlugin({
-      patterns: [{ from: path.resolve(__dirname, "../static") }],
+      patterns: [
+        { from: path.resolve(__dirname, "../static") },
+        { from: path.resolve(__dirname, "../static/models") },
+      ],
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "../src/index.html"),
@@ -74,7 +77,7 @@ module.exports = {
           {
             loader: "file-loader",
             options: {
-              outputPath: "assets/models/",
+              outputPath: "docs/models/",
             },
           },
         ],
