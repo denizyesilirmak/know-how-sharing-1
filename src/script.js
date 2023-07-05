@@ -3,7 +3,7 @@ import "./style.css";
 import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader.js";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 
-import ANIMFBX from '../static/models/anim.fbx'
+import ANIMFBX from "../static/models/anim.fbx";
 
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x000000);
@@ -64,7 +64,10 @@ scene.add(dirLight);
 const loader = new FBXLoader();
 let mixer;
 
+const loadingDom = document.getElementById("loading");
+
 loader.load(ANIMFBX, function (object) {
+  loadingDom.style.display = "none";
   mixer = new THREE.AnimationMixer(object);
   const action = mixer.clipAction(object.animations[0]);
   action.play();
